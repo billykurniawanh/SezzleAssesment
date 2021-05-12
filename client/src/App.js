@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Calculator from './component/Calculator';
 import History from './component/History';
 import socketIOClient from 'socket.io-client';
-const socket = socketIOClient('http://127.0.0.1:5000');
+const socket = socketIOClient(
+  'https://sezzleassesmentbillyhalim.herokuapp.com/',
+);
 
 const App = () => {
   const [history, setHistory] = useState([]);

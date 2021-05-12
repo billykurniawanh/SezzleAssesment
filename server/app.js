@@ -1,9 +1,12 @@
 var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser');
+const path = require('path');
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'build')));
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
