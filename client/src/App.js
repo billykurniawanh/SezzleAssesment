@@ -3,7 +3,6 @@ import Calculator from './component/Calculator';
 import History from './component/History';
 import socketIOClient from 'socket.io-client';
 
-// const socket = socketIOClient('http://localhost:5000');
 const socket = socketIOClient(
   'https://sezzleassesmentbillyhalim.herokuapp.com',
 );
