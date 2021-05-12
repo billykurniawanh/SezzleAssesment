@@ -6,7 +6,10 @@ const path = require('path');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname + '/client/build/index.html'));
+});
 
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
@@ -39,10 +42,12 @@ io.on('connection', socket => {
   });
 });
 
-var server = app.listen(5000, function () {
+var server = app.listen('5000', function () {
   console.log("Calling app.listen's callback function.");
   var host = server.address().address;
   var port = server.address().port;
   console.log('App listening at http://%s:%s', host, port);
 });
 io.listen(server);
+
+module.exports = app;

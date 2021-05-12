@@ -36,7 +36,7 @@ const Calculator = ({ socket }) => {
   const evaluateExpression = () => {
     try {
       const result = evaluate(expression);
-      socket.emit('newExpression', expression + '=' + result);
+      socket.emit('newExpression', expression + ' = ' + result);
       setExpression(result);
     } catch (err) {
       setExpression('ERROR');
