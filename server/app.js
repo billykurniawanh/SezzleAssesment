@@ -26,6 +26,7 @@ const getApiAndEmit = socket => {
 io.on('connection', socket => {
   console.log('New client connected');
   userConnected += 1;
+  console.log('Users connected: ' + userConnected);
   socket.emit('updateHistory', history);
 
   socket.on('newExpression', expression => {
@@ -42,6 +43,7 @@ io.on('connection', socket => {
   socket.on('disconnect', () => {
     console.log('Client disconnected');
     userConnected -= 1;
+    console.log('Users connected: ' + userConnected);
     if (userConnected == 0) history = [];
     clearInterval(interval);
   });
